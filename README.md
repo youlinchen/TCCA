@@ -4,7 +4,7 @@ The code that accompanies the paper "Tensor Canonical Correlation Analysis"
 by Chen, Kolar and Tsay.   
 https://arxiv.org/abs/1906.05358
 
-# Usage Instructions
+# Basic Usage
 
 We implement several algorithms in util.py
 
