@@ -305,7 +305,7 @@ def twoDcca_iter_onestep(X, Y, Lx, Rx, Ly, Ry, M, m, eta, x_regular, y_regular):
 
     return (Lx, Rx, Ly, Ry), la.norm(X_tf - Y_tf , ord='fro'), dLx+dLy+dRx+dRy
     
-def twoDcca_iter(X, Y, M, m, eta, x_regular=1e-4, y_regular=1e-4, iter_max=10):
+def twoDcca_iter:(X, Y, M, m, eta, x_regular=1e-4, y_regular=1e-4, iter_max=10)
     (_, mx, nx) = X.shape
     (_, my, ny) = Y.shape
     
