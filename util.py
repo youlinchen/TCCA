@@ -21,7 +21,7 @@ def SVRG(u, v, X, Y, rx, M, m, eta):
         u = w.copy()
     return u
 
-def towDcca_transform(X, L, R):
+def twoDcca_transform(X, L, R):
     (N, _, _) = X.shape
     (_, k1) = L.shape
     (_, k2) = R.shape
@@ -50,8 +50,8 @@ def twoDcca_SVD(X, Y, k1, k2, loading_init=None, regular=1e-6, iter_max=10):
     error = np.zeros(iter_max+1)
     
     (Lx, Rx, Ly, Ry) = loading_init if loading_init else list(map(lambda x: np.random.randn(x, 1), (mx, nx, my, ny)))
-    X_tf = towDcca_transform(X, Lx, Rx)
-    Y_tf = towDcca_transform(Y, Ly, Ry)
+    X_tf = twoDcca_transform(X, Lx, Rx)
+    Y_tf = twoDcca_transform(Y, Ly, Ry)
     corr[0] = np.corrcoef(X_tf.T, Y_tf.T)[0][1]
     
     for i in range(iter_max):
@@ -84,8 +84,8 @@ def twoDcca_SVD(X, Y, k1, k2, loading_init=None, regular=1e-6, iter_max=10):
         diff += la.norm(Ry-Revec[nx:, :k2])
         Ry = Revec[nx:, :k2]
         
-        X_tf = towDcca_transform(X, Lx, Rx)
-        Y_tf = towDcca_transform(Y, Ly, Ry)
+        X_tf = twoDcca_transform(X, Lx, Rx)
+        Y_tf = twoDcca_transform(Y, Ly, Ry)
         corr[i+1] = np.corrcoef(X_tf.T, Y_tf.T)[0][1]
         error[i+1] = diff
         
@@ -134,8 +134,8 @@ def twoDcca(X, Y, method='als', updating_rule='exact', para=None, loading_init=N
     corr = np.zeros(iter_max+1)
     error = np.zeros(iter_max)
     
-    X_tf = towDcca_transform(X, Lx, Rx)
-    Y_tf = towDcca_transform(Y, Ly, Ry)
+    X_tf = twoDcca_transform(X, Lx, Rx)
+    Y_tf = twoDcca_transform(Y, Ly, Ry)
     corr[0] = np.corrcoef(X_tf.T, Y_tf.T)[0][1]
 
     for n in range(iter_max):
@@ -147,8 +147,8 @@ def twoDcca(X, Y, method='als', updating_rule='exact', para=None, loading_init=N
         YL = np.matmul(Y.transpose(0,2,1), Ly)[:,:,0]
         (Rx, Ry, dRx, dRy) = twoDcca_oneStep(Rx, Ry, XL, YL, method, updating_rule, para, x_regular, y_regular)
         
-        X_tf = towDcca_transform(X, Lx, Rx)
-        Y_tf = towDcca_transform(Y, Ly, Ry)
+        X_tf = twoDcca_transform(X, Lx, Rx)
+        Y_tf = twoDcca_transform(Y, Ly, Ry)
       
         loading = [Lx, Rx, Ly, Ry]
         corr[n+1] = np.corrcoef(X_tf.T, Y_tf.T)[0][1]
@@ -219,8 +219,8 @@ def twoDcca_mat(X, Y, p1, p2, loading_init=None, updating_rule='exact', para=Non
     corr = np.zeros(iter_max+1)
     error = np.zeros(iter_max)
 
-    X_tf = towDcca_transform(X, Lx, Rx)
-    Y_tf = towDcca_transform(Y, Ly, Ry)
+    X_tf = twoDcca_transform(X, Lx, Rx)
+    Y_tf = twoDcca_transform(Y, Ly, Ry)
     corr[0] = la.norm(X_tf - Y_tf , ord='fro')
     
     for n in range(iter_max):
@@ -232,8 +232,8 @@ def twoDcca_mat(X, Y, p1, p2, loading_init=None, updating_rule='exact', para=Non
         XL = np.matmul(X.transpose(0,2,1), Lx)[:,:,0]
         YL = np.matmul(Y.transpose(0,2,1), Ly)[:,:,0]
         (Rx, Ry, dRx, dRy) = twoDcca_mat_oneStep(Rx, Ry, XL, YL, updating_rule, para, x_regular, y_regular)
-        X_tf = towDcca_transform(X, Lx, Rx)
-        Y_tf = towDcca_transform(Y, Ly, Ry)
+        X_tf = twoDcca_transform(X, Lx, Rx)
+        Y_tf = twoDcca_transform(Y, Ly, Ry)
         corr[n+1] = la.norm(X_tf - Y_tf , ord='fro')
         
         loading = [Lx, Rx, Ly, Ry]
@@ -300,8 +300,8 @@ def twoDcca_iter_onestep(X, Y, Lx, Rx, Ly, Ry, M, m, eta, x_regular, y_regular):
     YL = np.matmul(Y.transpose(0,2,1), Ly)[:,:,0]
     (Rx, Ry, dRx, dRy) = oneDcca_oneStep_SVRG(Rx, Ry, XL, YL, M, m, eta, x_regular, y_regular)
 
-    X_tf = towDcca_transform(X, Lx, Rx)
-    Y_tf = towDcca_transform(Y, Ly, Ry)
+    X_tf = twoDcca_transform(X, Lx, Rx)
+    Y_tf = twoDcca_transform(Y, Ly, Ry)
 
     return (Lx, Rx, Ly, Ry), la.norm(X_tf - Y_tf , ord='fro'), dLx+dLy+dRx+dRy
     
