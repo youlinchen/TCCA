@@ -103,7 +103,7 @@ def twoDcca_oneStep(ui, vi, X, Y, method, updating_rule, para, x_regular, y_regu
         u = la.solve((Sxx+x_regular*np.eye(p)),Sxy@vi)
     if updating_rule == 'inexact':
         M, m, eta = para
-        u = SVRG(u0, v0, X, Y, x_regular, M, m, eta)
+        u = SVRG(ui, vi, X, Y, x_regular, M, m, eta)
     if method=='pi':
         u /= np.sqrt(u.T@Sxx@u)
     if method=='als':
@@ -114,7 +114,7 @@ def twoDcca_oneStep(ui, vi, X, Y, method, updating_rule, para, x_regular, y_regu
         v = la.solve((Syy+y_regular*np.eye(q)),Sxy.T@u)
     if updating_rule == 'inexact':
         M, m, eta = para
-        v = SVRG(v0, u, Y, X, y_regular, M, m, eta)
+        v = SVRG(vi, u, Y, X, y_regular, M, m, eta)
     if method=='pi':
         v /= np.sqrt(v.T@Syy@v)
     if method=='als':
