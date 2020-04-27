@@ -8,9 +8,9 @@ https://arxiv.org/abs/1906.05358
 
 We implement several algorithms in util.py
 
--  ``twoDcca(X, Y, method='als', updating_rule='exact')`` – 2DCCA for first left and right canonical component
--  ``twoDcca_mat(X, Y, p1, p2, updating_rule='exact')`` - (``p1``,``p2``)-2DCCA
--  ``twoDcca_iter(X, Y, M, m, eta)`` - The deflation procedure of two 2DCCA components which is only implement for inexact updating, where ``M`` and ``m`` is the number of outer loop and inner loop for SVRG, respectively, and ``eta`` is the learning rate.
+-  ``twoDcca(X, Y)`` – 2DCCA for first left and right canonical component
+-  ``twoDcca_mat(X, Y, p1, p2)`` - (``p1``,``p2``)-2DCCA
+-  ``twoDcca_iter(X, Y)`` - The deflation procedure of two 2DCCA components which is only implement for inexact updating, where ``M`` and ``m`` is the number of outer loop and inner loop for SVRG, respectively, and ``eta`` is the learning rate.
 
 See example_util.ipynb for more details.
 
