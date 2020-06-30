@@ -19,6 +19,7 @@ We compute TCCA for three datasets in `Comparision.ipynb`. The result is shown i
 
 Reference:
 AppGrad: https://github.com/MaZhuang/CCA 
+
 rifle: https://cran.r-project.org/web/packages/rifle/index.html
 
 ## Air Pollution Data in Taiwan
