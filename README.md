@@ -16,8 +16,8 @@ We implement several algorithms in util.py
 
 Please see `example_util.ipynb` for more details.
 
-## comparison
-We compute TCCA for three datasets in `Comparision.ipynb`. The result is shown in Table 1.
+## Comparison
+We compute TCCA for three datasets in `Comparision.ipynb`. The result is shown in Table 1 of our paper.
 
 Reference:
 AppGrad: https://github.com/MaZhuang/CCA 
