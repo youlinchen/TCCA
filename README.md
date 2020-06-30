@@ -1,6 +1,6 @@
 # Tensor Canonical Correlation Analysis
 
-The code that accompanies the paper "Tensor Canonical Correlation Analysis"
+The code that accompanies the paper "Tensor Canonical Correlation Analysis withConvergence and Statistical Guarantees"
 by Chen, Kolar and Tsay.   
 https://arxiv.org/abs/1906.05358
 
@@ -8,15 +8,9 @@ https://arxiv.org/abs/1906.05358
 
 We implement several algorithms in util.py
 
-<<<<<<< Updated upstream
--  ``twoDcca(X, Y)`` – 2DCCA for first left and right canonical component
--  ``twoDcca_mat(X, Y, p1, p2)`` - (``p1``,``p2``)-2DCCA
--  ``twoDcca_iter(X, Y)`` - The deflation procedure of two 2DCCA components which is only implement for inexact updating, where ``M`` and ``m`` is the number of outer loop and inner loop for SVRG, respectively, and ``eta`` is the learning rate.
-=======
 -  ``twoDcca(X, Y)`` – 2DCCA for first left and right canonical component.
 -  ``twoDcca_mat(X, Y, p1, p2)`` - (``p1``,``p2``) - 2DCCA or p1 left and p3 right canonical components.
--  ``twoDcca_deflation(X, Y, iter_max=10)`` - The deflation procedure of two 2DCCA components which is only implement for inexact updating, where ``M`` and ``m`` is the number of outer loop and inner loop for SVRG, respectively, and ``eta`` is the learning rate.
->>>>>>> Stashed changes
+-  ``twoDcca_deflation(X, Y)`` - The deflation procedure of two 2DCCA components which is only implement for inexact updating
 
 Please see `example_util.ipynb` for more details.
 
