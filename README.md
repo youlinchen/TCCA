@@ -11,7 +11,7 @@ Link: https://arxiv.org/abs/1906.05358
 We implement several algorithms in util.py
 
 -  ``twoDcca(X, Y)`` – 2DCCA for first left and right canonical component.
--  ``twoDcca_mat(X, Y, p1, p2)`` - (``p1``,``p2``) - 2DCCA or p1 left and p3 right canonical components.
+-  ``twoDcca_mat(X, Y, p1, p2)`` - (``p1``,``p2``)-2DCCA for computing ``p1`` left and ``p2`` right canonical components.
 -  ``twoDcca_deflation(X, Y)`` - The deflation procedure of two 2DCCA components which is only implement for inexact updating
 
 Please see `example_util.ipynb` for more details.
