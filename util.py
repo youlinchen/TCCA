@@ -9,18 +9,6 @@ def OMat(x, p):
     y = np.random.randn(x, p)
     return la.qr(y,  mode='economic')[0]
 
-def SVRG(u, v, X, Y, rx, M, m, eta):
-    (n, _) = X.shape
-    for j in range(M):
-        w = u.copy()
-        batch_grad = X.T@(X@u-Y@v)/n+rx*u
-        for t in range(m):
-            i = np.random.choice(n, 1)[0]
-            grad = (X[i, :].dot(w-u))*X[i:i+1, :].T + rx*(w-u) + batch_grad
-            w -= eta*grad
-        u = w.copy()
-    return u
-
 def twoDcca_transform(X, L, R):
     (N, _, _) = X.shape
     (_, k1) = L.shape
