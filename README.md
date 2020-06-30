@@ -1,7 +1,6 @@
 # Tensor Canonical Correlation Analysis
 
 The code that accompanies the paper "Tensor Canonical Correlation Analysis withConvergence and Statistical Guarantees"
-
 by Chen, Kolar and Tsay.   
 
 Link: https://arxiv.org/abs/1906.05358
